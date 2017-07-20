@@ -130,6 +130,10 @@ ul{
 	padding-left: 10px;
 }
 
+li{
+	padding: 10px 0px 0px 0px;
+}
+
 /* FOOTER */
 
 .footer{
