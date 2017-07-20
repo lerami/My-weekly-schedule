@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Grand+Hotel|Roboto" rel="stylesheet">
+
+<!-- ICONS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="schedule.css" media="all" />
+
+
+
+<title>A schedule based on node.js (express framework)</title>
+</head>
+<body>
+<div class="container">
+	<div class="main-title">My weekly schedule</div>
+	<div class="horizontal-lign"></div>
+	<div class="subtitle">based on express.js</div>
+
+	<div class="options">
+	<div id="add" title="Add a new activity"><i class="material-icons">create</i></div>
+
+	<div id="reset" title="Reset the schedule"><a href="/reset"><i class="material-icons">autorenew</i></a></div>	
+	</div>
+	</div>
+
+	<div class="form-container">
+	<form style="display: none;" id="add-form" method="post" action="/add">
+	Declare a new activity : <br>
+		<label for="add"></label>
+		<input type="text" name="add" />
+		<label for="day">on</label>
+		<select name="day">
+  			<option value="Monday">Monday</option>
+  			<option value="Tuesday">Tuesday</option>
+ 			<option value="Wednesday">Wednesday</option>
+ 			<option value="Thursday">Thursday</option>
+			<option value="Friday">Friday</option>
+			<option value="Saturday">Saturday</option>
+			<option value="Sunday">Sunday</option>
+		</select>
+		<input type="submit" name="Submit" />
+	</form>
+	</div>
+
+<div class="clear"></div>
+
+
+<div class="schedule">
+	<div class="day-table">
+		<div class="day-title">Monday</div>
+		<ul>
+		<% schedule.forEach(function(activity, index){ %>
+			<% if(activity.day == "Monday"){ %>
+			<li><div id="delete" title="Delete <%= activity.name %>"><a href="/delete/<%= index %>""><i class="material-icons">delete sweep</i></a></div>
+			<p><%= activity.name %></p></li>
+			<% } %>
+		<% }); %>
+		</ul>
+	</div>
+	
+	<div class="day-table">
+		<div class="day-title">Tuesday</div>
+		<ul>
+		<% schedule.forEach(function(activity, index){ %>
+			<% if(activity.day == "Tuesday"){ %>
+			<li><div id="delete" title="Delete <%= activity.name %>"><a href="/delete/<%= index %>""><i class="material-icons">delete sweep</i></a></div>
+			<p><%= activity.name %></p></li>
+			<% } %>
+		<% }); %>
+		</ul>
+	</div>
+
+	<div class="day-table">
+		<div class="day-title">Wednesday</div>
+		<ul>
+		<% schedule.forEach(function(activity, index){ %>
+		<% if(activity.day == "Wednesday"){ %>
+			<li><div id="delete" title="Delete <%= activity.name %>"><a href="/delete/<%= index %>""><i class="material-icons">delete sweep</i></a></div>
+			<%= activity.name %></li>
+		<% } %>
+		<% }); %>
+		</ul>
+	</div>
+
+	<div class="day-table">
+		<div class="day-title">Thursday</div>
+		<ul>
+		<% schedule.forEach(function(activity, index){ %>
+		<% if(activity.day == "Thursay"){ %>
+			<li><div id="delete" title="Delete <%= activity.name %>"><a href="/delete/<%= index %>""><i class="material-icons">delete sweep</i></a></div>
+			<%= activity.name %></li>
+			<% } %>
+		<% }); %>
+		</ul>
+	</div>
+
+	<div class="day-table">
+		<div class="day-title">Friday</div>
+		<ul>
+		<% schedule.forEach(function(activity, index){ %>
+		<% if(activity.day == "Friday"){ %>
+			<li><div id="delete" title="Delete <%= activity.name %>"><a href="/delete/<%= index %>""><i class="material-icons">delete sweep</i></a></div>
+			<%= activity.name %></li>
+		<% } %>
+		<% }); %>
+		</ul>
+	</div>
+
+	<div class="day-table">
+		<div class="day-title">Saturday</div>
+		<ul>
+		<% schedule.forEach(function(activity, index){ %>
+		<% if(activity.day == "Saturday"){ %>
+			<li><div id="delete" title="Delete <%= activity.name %>"><a href="/delete/<%= index %>""><i class="material-icons">delete sweep</i></a></div>
+			<%= activity.name %></li>
+		<% } %>
+		<% }); %>
+		</ul>
+	</div>
+
+	<div class="day-table">
+		<div class="day-title">Sunday</div>
+		<ul>
+		<% schedule.forEach(function(activity, index){ %>
+		<% if(activity.day == "Sunday"){ %>
+			<li><div id="delete" title="Delete <%= activity.name %>"><a href="/delete/<%= index %>""><i class="material-icons">delete sweep</i></a></div>
+			<%= activity.name %></li>
+		<% } %>
+		<% }); %>
+		</ul>
+	</div>
+</div>
+
+<div class="footer">
+made by @lerami.
+</div>
+</body>
+
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+// Add-a-new-activity function
+
+var formShow = false;
+
+$("#add").click(function(){
+	if (formShow == false){
+		$("#add-form").show();
+		formShow = true;
+			}
+	else{	
+		$("#add-form").hide();
+		formShow = false;
+	}
+});
+
+
+$("#reset").click(function(){
+	alert("Your schedule will be reset.");
+})
+
+</script>
+
+</html>
